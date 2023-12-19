@@ -102,18 +102,21 @@ public class StageManager : MonoBehaviour
     {
         _dreamInterface.SetActive(false);
         _stageState = StageState.real;
+        SwitchField();
     }
 
     void SwitchField() // stage‚ğØ‚è‘Ö‚¦‚é
     {
         if (_stageState == StageState.real) // to real
         {
+            _playerInput.WakeUp();
             Camera.main.cullingMask = ~(1 << _dreamLayer);
             foreach (Collider2D col in _realColliders) col.isTrigger = false;
             foreach (Collider2D col in _dreamColliders) col.isTrigger = true;
         }
         else // to dream
         {
+            _playerInput.Sleep();
             Camera.main.cullingMask = ~(1 << _realLayer);
             foreach (Collider2D col in _realColliders) col.isTrigger = true;
             foreach (Collider2D col in _dreamColliders) col.isTrigger = false;
