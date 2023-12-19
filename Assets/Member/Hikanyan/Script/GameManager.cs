@@ -20,11 +20,11 @@ public class GameManager : AbstractSingleton<GameManager>
 
     [SerializeField] private GameObject _resultUI;
 
-    CRIAudioManager _criAudioManager;
+    AudioManager _audioManager;
 
     public void Awake()
     {
-        _criAudioManager = CRIAudioManager.Instance;
+        _audioManager = AudioManager.Instance;
         _timeValue = _time;
         UpdateTimeText();
     }
@@ -79,7 +79,7 @@ public class GameManager : AbstractSingleton<GameManager>
             UpdateGameTimer();
         }
         // BGM再生など
-        _criAudioManager.CriBgmPlay(0);
+        _audioManager.CriBgmPlay(0);
     }
 
 
@@ -107,7 +107,7 @@ public class GameManager : AbstractSingleton<GameManager>
         // スコア表示
         // BGM再生
         // リザルト画面表示など
-        _criAudioManager.CriBgmStop();
+        _audioManager.CriBgmStop();
         _resultUI.SetActive(true);
     }
 }
