@@ -9,14 +9,16 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-         _rb2d = GetComponent<Rigidbody2D>();
+        _rb2d = GetComponent<Rigidbody2D>();
         _playerAnim = GetComponent<Animator>();
     }
 
     void Update()
     {
         _horizontalInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        _playerAnim.SetFloat("moveSpeed", _horizontalInput);
+        _playerAnim.SetFloat("moveSpeed", Mathf.Abs(_horizontalInput));
         _rb2d.velocity = new Vector2(_horizontalInput * _speed, _rb2d.velocity.y);
+        if (_horizontalInput != 0f)
+            _rb2d.transform.rotation = _horizontalInput < 0f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180f, 0);
     }
 }

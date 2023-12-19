@@ -231,7 +231,6 @@ GameObject:
   - component: {fileID: 1149028640}
   - component: {fileID: 1149028639}
   - component: {fileID: 1149028638}
-  - component: {fileID: 1149028647}
   - component: {fileID: 1149028646}
   m_Layer: 0
   m_Name: Player
@@ -272,8 +271,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.04010415, y: 0.04135251}
+  m_Size: {x: 3.2725592, y: 7.269486}
   m_Direction: 0
 --- !u!50 &1149028639
 Rigidbody2D:
@@ -314,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b596dd65b2a184c81cd40c5f1ce351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 200
+  _speed: 600
 --- !u!114 &1149028641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1da738cbeaaee43b9288da0181bd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 10
+  _jumpForce: 7
   _jumpCount: 0
 --- !u!114 &1149028642
 MonoBehaviour:
@@ -338,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149028637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 599fc92e015076548882a0e323798d95, type: 3}
+  m_Script: {fileID: 11500000, guid: 060ac4f124c52bd4f973407664430c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1149028643
@@ -394,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 980056719, guid: 0d84d7a84dc186143bcd5ff8249c42f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -414,8 +413,8 @@ Transform:
   m_GameObject: {fileID: 1149028637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.59, y: 1.17, z: 0}
-  m_LocalScale: {x: 0.54, y: 0.54, z: 0.54}
+  m_LocalPosition: {x: -2.59, y: 0.77, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -441,20 +440,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1149028647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149028637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7ce141c3937674f8ac247bbcf63711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorDefault: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  colorSelected: {r: 0.25, g: 0.65, b: 0.8, a: 1}
 --- !u!1 &1598408120
 GameObject:
   m_ObjectHideFlags: 0
