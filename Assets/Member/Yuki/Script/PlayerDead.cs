@@ -1,0 +1,24 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PlayerDead : AbstractSingleton<PlayerDead> 
+{
+    Animator _playerAnimator = default;
+    void Start()
+    {
+        _playerAnimator = GetComponent<Animator>();
+    }
+
+    public void Dead()
+    {
+        _playerAnimator.SetTrigger("isDead");
+    }
+
+    /// <summary> Playerが死亡時にアニメーションイベントから参照する </summary>
+    public void ReLoadScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+}
+
