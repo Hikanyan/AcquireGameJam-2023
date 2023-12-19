@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using Cysharp.Threading.Tasks;
 
 public class ChangeLayer : MonoBehaviour
 {
@@ -11,12 +12,17 @@ public class ChangeLayer : MonoBehaviour
 
     private void Start()
     {
+        GameObject realObject = GameObject.FindGameObjectWithTag("Real");
+        GameObject dreamObject = GameObject.FindGameObjectWithTag("Dream");
+        
         var realLayer = LayerMask.NameToLayer("Real");
         var dreamLayer = LayerMask.NameToLayer("Dream");
 
         //realLayerを表示
         ChangeCameraLayer(dreamLayer);
-        
+        realObject.SetActive(true);
+        dreamObject.SetActive(false);
+
         this.UpdateAsObservable()
         .Subscribe(_ =>
         {
@@ -26,11 +32,15 @@ public class ChangeLayer : MonoBehaviour
                 {
                     _nowState = NowState.Dream;
                     ChangeCameraLayer(realLayer); //Realレイヤー以外を表示
+                    realObject.SetActive(false);
+                    dreamObject.SetActive(true);
                 }
                 else
                 {
                     _nowState = NowState.Real;
                     ChangeCameraLayer(dreamLayer);//dreamレイヤー以外を表示
+                    realObject.SetActive(false);
+                    dreamObject.SetActive(true);
                 }
             }
         });
