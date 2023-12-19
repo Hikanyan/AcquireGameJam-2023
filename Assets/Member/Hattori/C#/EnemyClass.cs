@@ -9,7 +9,7 @@ public class EnemyClass : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //Player‚ğÁ‚·ˆ—‚ğ•t‚¯‘«‚·—\’èB
+            other
         }
     }
 }
