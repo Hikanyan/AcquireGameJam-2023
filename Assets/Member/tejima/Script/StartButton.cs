@@ -31,7 +31,7 @@ public class StartButton : MonoBehaviour
         }
         if (timer1 <= 0)
         {
-            SceneManager.LoadScene("stage1", LoadSceneMode.Single);
+            SceneManager.LoadScene("Stage1", LoadSceneMode.Single);
 
         }
         if (change2 == true) 
@@ -40,7 +40,7 @@ public class StartButton : MonoBehaviour
         }
         if (timer2 <= 0)
         {
-            SceneManager.LoadScene("stage2", LoadSceneMode.Single);
+            SceneManager.LoadScene("Stage2", LoadSceneMode.Single);
 
         }
         if (change3 == true) 
@@ -49,7 +49,7 @@ public class StartButton : MonoBehaviour
         }
         if (timer3 <= 0)
         {
-            SceneManager.LoadScene("stage3", LoadSceneMode.Single);
+            SceneManager.LoadScene("Stage3", LoadSceneMode.Single);
 
         }
     }
