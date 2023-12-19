@@ -1,27 +1,31 @@
 using UnityEngine;
 
-public class PlayerInput : AbstractSingleton<PlayerInput>
+public class PlayerInput : MonoBehaviour
 {
     bool _isSleep = default;
-    public bool IsSleep => _isSleep;
+    public bool IsSleep { get => _isSleep; set => _isSleep = value; }
     Animator _playerAnimator = default;
 
+    bool _canWakeUp = false;
+    StageManager _stageManager = default;
     private void Start()
     {
         _playerAnimator = GetComponent<Animator>();
+        _stageManager = StageManager.Instance;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if(_isSleep)WakeUp();
+            _stageManager.SwitchDream();
+            if (_isSleep) WakeUp();
             else Sleep();
         }
     }
 
     /// <summary> Player‚ª–°‚é</summary>
-    void Sleep()
+    public void Sleep()
     {
         Debug.Log("–°‚é");
         _isSleep = true;
