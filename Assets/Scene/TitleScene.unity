@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CriAudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8609413158906198385, guid: da556661f2df3184a9e30ed16c2c6652, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

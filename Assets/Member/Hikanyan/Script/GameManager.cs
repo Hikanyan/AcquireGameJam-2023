@@ -20,11 +20,11 @@ public class GameManager : AbstractSingleton<GameManager>
 
     [SerializeField] private GameObject _resultUI;
 
-    CRIAudioManager _criAudioManager;
+    CriAudioManager _criAudioManager;
 
     public void Awake()
     {
-        _criAudioManager = CRIAudioManager.Instance;
+        _criAudioManager = CriAudioManager.Instance;
         _timeValue = _time;
         UpdateTimeText();
     }
