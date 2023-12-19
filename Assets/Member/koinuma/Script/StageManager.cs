@@ -5,6 +5,10 @@ using DG.Tweening;
 public class StageManager : MonoBehaviour
 {
     [SerializeField] PlayerInput _playerInput;
+    [SerializeField] int _realLayer;
+    [SerializeField] int _dreamLayer;
+    [SerializeField, Tooltip("realÇ≈å©Ç¶ÇÈobjectÇÃêe")] GameObject _realField;
+    [SerializeField, Tooltip("dreamÇ≈å©Ç¶ÇÈobjectÇÃêe")] GameObject _dreamField;
     [SerializeField] float _timeLimit;
     [SerializeField] GameObject _clockHand;
     [SerializeField, Tooltip("[0]:ñÈ [1];ñæÇØï˚ [2]:í©")] SpriteRenderer[] _backGrounds;
@@ -18,9 +22,12 @@ public class StageManager : MonoBehaviour
     static StageManager _instance;
     public static StageManager Instance{ get => _instance; }
 
+    Collider2D[] _realColliders;
+    Collider2D[] _dreamColliders;
+
     float _timer;
     float _timePer;
-    StageState _stageState = StageState.nomal;
+    StageState _stageState = StageState.real;
 
     private void Awake()
     {
@@ -34,6 +41,9 @@ public class StageManager : MonoBehaviour
             instance = singletonObject.AddComponent<StageManager>();
             singletonObject.name = typeof(StageManager).ToString();
         }
+
+        _realColliders = _realField.GetComponentsInChildren<Collider2D>();
+        _dreamColliders = _dreamField.GetComponentsInChildren<Collider2D>();
     }
 
     private void Start()
@@ -44,6 +54,8 @@ public class StageManager : MonoBehaviour
 
         _dreamInterface.SetActive(false);
         _dreamCountText.text = _dreamCount.ToString();
+
+        SwitchField();
     }
 
     private void Update()
@@ -54,7 +66,7 @@ public class StageManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            //SwitchDream();
+            SwitchDream();
         }
     }
 
@@ -66,18 +78,22 @@ public class StageManager : MonoBehaviour
 
     public void SwitchDream()
     {
-        if (_stageState == StageState.nomal && _dreamCount > 0)
+        if (_stageState == StageState.real && _dreamCount > 0)
         {
-            _dreamInterface.SetActive(true);
             _stageState = StageState.dream;
+            _dreamInterface.SetActive(true);
+            SwitchField();
+
             _dreamCount--;
             _dreamCountText.text = _dreamCount.ToString();
             Invoke(nameof(ReturnFromDream), _dreamTime);
         }
         else if (_stageState == StageState.dream)
         {
+            _stageState = StageState.real;
             _dreamInterface.SetActive(false);
-            _stageState = StageState.nomal;
+            SwitchField();
+
             CancelInvoke(nameof(ReturnFromDream));
         }
     }
@@ -85,7 +101,23 @@ public class StageManager : MonoBehaviour
     void ReturnFromDream()
     {
         _dreamInterface.SetActive(false);
-        _stageState = StageState.nomal;
+        _stageState = StageState.real;
+    }
+
+    void SwitchField() // stageÇêÿÇËë÷Ç¶ÇÈ
+    {
+        if (_stageState == StageState.real) // to real
+        {
+            Camera.main.cullingMask = ~(1 << _dreamLayer);
+            foreach (Collider2D col in _realColliders) col.isTrigger = false;
+            foreach (Collider2D col in _dreamColliders) col.isTrigger = true;
+        }
+        else // to dream
+        {
+            Camera.main.cullingMask = ~(1 << _realLayer);
+            foreach (Collider2D col in _realColliders) col.isTrigger = true;
+            foreach (Collider2D col in _dreamColliders) col.isTrigger = false;
+        }
     }
 
     public void AddDreamCount()
@@ -97,6 +129,6 @@ public class StageManager : MonoBehaviour
 
 enum StageState
 {
-    nomal,
+    real,
     dream
 }
