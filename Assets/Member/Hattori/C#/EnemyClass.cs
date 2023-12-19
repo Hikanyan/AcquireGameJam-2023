@@ -9,8 +9,7 @@ public class EnemyClass : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerDead.Instance.Dead();
+            other.GetComponent<PlayerDead>();
         }
     }
 }
-                                                                    
