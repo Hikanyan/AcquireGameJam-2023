@@ -13,8 +13,4 @@ UnityのVersion
 ・「制作」は当日から開始するようにしてください。<br>
 　→事前にテーマや方向性を決めてもかまいません！<br>
 
- # マージ時にやりたいことメモ
-・ProjectSettings/TagManager
-→Ground, Player
-
 参加者

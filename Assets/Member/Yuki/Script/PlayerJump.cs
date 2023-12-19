@@ -1,4 +1,3 @@
-using System.Data.SqlTypes;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -36,7 +35,7 @@ public class PlayerJump : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             _jumpCount = 0;
-            _playerAnimator.SetBool(_jumpCount, false);
+            _playerAnimator.SetBool("isJump", false);
         }
 
     }

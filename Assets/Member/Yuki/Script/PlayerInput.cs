@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : AbstractSingleton<PlayerInput>
 {
-    // Start is called before the first frame update
-    void Start()
+    bool _isSleep = default;
+    public bool IsSleep => _isSleep;
+    Animator _playerAnimator = default;
+
+    private void Start()
     {
-        
+        _playerAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if(_isSleep)WakeUp();
+            else Sleep();
+        }
     }
+
+    /// <summary> Player‚ª–°‚é</summary>
+    void Sleep()
+    {
+        Debug.Log("–°‚é");
+        _isSleep = true;
+        _playerAnimator.SetTrigger("isSleep");
+    }
+
+    /// <summary> Player‚ª–ÚŠo‚ß‚é </summary>
+    public void WakeUp()
+    {
+        Debug.Log("–ÚŠo‚ß‚é");
+        _isSleep = false;
+        _playerAnimator.SetTrigger("isWakeUp");
+    }
+
 }
