@@ -11,12 +11,17 @@ public class ChangeLayer : MonoBehaviour
 
     private void Start()
     {
+        GameObject realObject = GameObject.FindGameObjectWithTag("Real");
+        GameObject dreamObject = GameObject.FindGameObjectWithTag("Dream");
+        
         var realLayer = LayerMask.NameToLayer("Real");
         var dreamLayer = LayerMask.NameToLayer("Dream");
 
         //realLayerを表示
         ChangeCameraLayer(dreamLayer);
-        
+        realObject.SetActive(false);
+        dreamObject.SetActive(true);
+
         this.UpdateAsObservable()
         .Subscribe(_ =>
         {
@@ -26,11 +31,15 @@ public class ChangeLayer : MonoBehaviour
                 {
                     _nowState = NowState.Dream;
                     ChangeCameraLayer(realLayer); //Realレイヤー以外を表示
+                    realObject.SetActive(false);
+                    dreamObject.SetActive(true);
                 }
                 else
                 {
                     _nowState = NowState.Real;
                     ChangeCameraLayer(dreamLayer);//dreamレイヤー以外を表示
+                    realObject.SetActive(false);
+                    dreamObject.SetActive(true);
                 }
             }
         });
