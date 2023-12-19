@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDead : AbstractSingleton<PlayerDead> 
+public class PlayerDead : MonoBehaviour
 {
     Animator _playerAnimator = default;
     void Start()
