@@ -2,7 +2,7 @@ using UnityEngine;
 using CriWare;
 
 
-public class CriAudioManager : AbstractSingleton<CriAudioManager>
+public class AudioManager : AbstractSingleton<AudioManager>
 {
     [SerializeField] string _streamingAssetsPathAcf = "";
     [SerializeField] string _cueSheetBGM = "";
