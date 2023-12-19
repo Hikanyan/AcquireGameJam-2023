@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDead : MonoBehaviour
+public class PlayerDead : AbstractSingleton<PlayerDead> 
 {
     Animator _playerAnimator = default;
     void Start()
@@ -15,7 +15,7 @@ public class PlayerDead : MonoBehaviour
     }
 
     /// <summary> Playerが死亡時にアニメーションイベントから参照する </summary>
-    void ReLoadScene()
+    public void ReLoadScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);

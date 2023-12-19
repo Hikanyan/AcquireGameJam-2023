@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    float timer = 0;
+    float timer1 = 10;
+    float timer2 = 10;
+    float timer3 = 10;
+    bool change1 = false;
+    bool change2 = false;
+    bool change3 = false;
 
     Animator animator;
     // Start is called before the first frame update
@@ -17,36 +22,47 @@ public class StartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer = (10 - Time.deltaTime);
+        Debug.Log(timer1);
+        Debug.Log(timer2);
+        Debug.Log(timer3);
+        if (change1 == true)
+        {
+            timer1 -= Time.deltaTime;
+        }
+        if (timer1 <= 0)
+        {
+            SceneManager.LoadScene("Stage1", LoadSceneMode.Single);
+
+        }
+        if (change2 == true) 
+        {
+            timer2 -= Time.deltaTime;
+        }
+        if (timer2 <= 0)
+        {
+            SceneManager.LoadScene("Stage2", LoadSceneMode.Single);
+
+        }
+        if (change3 == true) 
+        {
+            timer3 -= Time.deltaTime;
+        }
+        if (timer3 <= 0)
+        {
+            SceneManager.LoadScene("Stage3", LoadSceneMode.Single);
+
+        }
     }
     public void ChangeScene1()
     {
-        animator.SetBool("Fade",true);
-
-        if (timer == 0)
-        {
-            SceneManager.LoadScene("stage1", LoadSceneMode.Single);
-
-        }
+        change1 = true;
     }
     public void ChangeScene2()
     {
-        animator.SetBool("Fade", true);
-
-        if (timer == 0)
-        {
-            SceneManager.LoadScene("stage2", LoadSceneMode.Single);
-
-        }
+        change2 = true;
     }
     public void ChangeScene3()
     {
-        animator.SetBool("Fade", true);
-
-        if (timer == 0)
-        {
-            SceneManager.LoadScene("stage3", LoadSceneMode.Single);
-
-        }
+        change3 = true;
     }
 }

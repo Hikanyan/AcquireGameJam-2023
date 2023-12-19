@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 2897671}
   - component: {fileID: 2897670}
   - component: {fileID: 2897673}
+  - component: {fileID: 2897674}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -231,6 +232,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1096929552}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fade
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2897671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +294,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ec820be03f54e49b24a3c1356693dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2897674
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5883a6280c9ad384ca6271d0c710f203, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &443212293
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +486,7 @@ GameObject:
   - component: {fileID: 653736026}
   - component: {fileID: 653736025}
   - component: {fileID: 653736028}
+  - component: {fileID: 653736029}
   m_Layer: 5
   m_Name: Button (Legacy) (1)
   m_TagString: Untagged
@@ -547,6 +582,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1096929552}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fade
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &653736026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +644,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ec820be03f54e49b24a3c1356693dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &653736029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653736023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5883a6280c9ad384ca6271d0c710f203, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &675020702
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +846,7 @@ RectTransform:
   - {fileID: 2897669}
   - {fileID: 653736024}
   - {fileID: 1988014320}
+  - {fileID: 1096929549}
   m_Father: {fileID: 2107386746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -928,12 +997,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096929548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2107386746}
+  m_Father: {fileID: 972115353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1670,6 +1739,7 @@ GameObject:
   - component: {fileID: 1988014322}
   - component: {fileID: 1988014321}
   - component: {fileID: 1988014324}
+  - component: {fileID: 1988014325}
   m_Layer: 5
   m_Name: Button (Legacy) (2)
   m_TagString: Untagged
@@ -1765,6 +1835,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1096929552}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Fade
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1988014322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,6 +1897,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ec820be03f54e49b24a3c1356693dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1988014325
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988014319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5883a6280c9ad384ca6271d0c710f203, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2107386742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,7 +2015,6 @@ RectTransform:
   - {fileID: 1874682112}
   - {fileID: 1972161277}
   - {fileID: 1743465571}
-  - {fileID: 1096929549}
   - {fileID: 1089897421}
   - {fileID: 972115353}
   m_Father: {fileID: 0}

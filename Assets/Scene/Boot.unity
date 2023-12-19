@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BootLoder
       objectReference: {fileID: 0}
+    - target: {fileID: 3090861535740805450, guid: 2c23967bc0ee13744a16fb2b58db4701, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6135313477485627210, guid: 2c23967bc0ee13744a16fb2b58db4701, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
