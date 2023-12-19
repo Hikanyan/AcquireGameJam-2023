@@ -74,7 +74,5 @@ crashlytics-build.properties
 /[Aa]ssets/ImportAssets
 
 .idea/
-Assets/Plugins.meta
-Assets/Plugins/CodeAssist.meta
-Assets/Plugins/
-ProjectSettings/SceneTemplateSettings.json
+Assets/CRIMW/
+Output/
