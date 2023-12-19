@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using Cysharp.Threading.Tasks;
 
 public class ChangeLayer : MonoBehaviour
 {
@@ -19,8 +20,8 @@ public class ChangeLayer : MonoBehaviour
 
         //realLayer‚ð•\Ž¦
         ChangeCameraLayer(dreamLayer);
-        realObject.SetActive(false);
-        dreamObject.SetActive(true);
+        realObject.SetActive(true);
+        dreamObject.SetActive(false);
 
         this.UpdateAsObservable()
         .Subscribe(_ =>
