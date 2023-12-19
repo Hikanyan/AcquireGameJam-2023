@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba61ae8486387444a22f8cec722aa5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _streamingAssetsPathAcf: ACQUIREGameJam-2023
+  _streamingAssetsPathAcf: ACQUIREGameJam2023
   _cueSheetBGM: CueSheet_BGM
   _cueSheetSe: CueSheet_SE
