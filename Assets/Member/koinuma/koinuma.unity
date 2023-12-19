@@ -818,7 +818,7 @@ MonoBehaviour:
   - {fileID: 615596727}
   _dreamInterface: {fileID: 1262805976}
   _dreamTime: 2
-  _dreamCount: 5
+  _dreamCount: 170
   _dreamCountText: {fileID: 720149209}
 --- !u!1 &609121427
 GameObject:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b596dd65b2a184c81cd40c5f1ce351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 500
 --- !u!114 &1121393572
 MonoBehaviour:
   m_ObjectHideFlags: 0
