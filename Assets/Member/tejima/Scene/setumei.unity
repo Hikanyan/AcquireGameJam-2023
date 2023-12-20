@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1622954668}
   - component: {fileID: 1622954667}
   - component: {fileID: 1622954666}
+  - component: {fileID: 1622954669}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -623,7 +624,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1622954667}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1622954669}
+        m_TargetAssemblyTypeName: BackButton, Assembly-CSharp
+        m_MethodName: BackScene2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1622954667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +675,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622954664}
   m_CullTransparentMesh: 1
+--- !u!114 &1622954669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622954664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f249c650407fc4d86e41a3b2ac69f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685134383
 GameObject:
   m_ObjectHideFlags: 0
