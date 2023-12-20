@@ -26,22 +26,26 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    /// <summary> Playerが眠る</summary>
+    /// <summary> 夢になる</summary>
     public void Sleep()
     {
-        _playerCon.runtimeAnimatorController = _dreamPlayerCon;
-        Debug.Log("眠る");
+        Debug.Log("夢になる");
         _isSleep = true;
         _playerCon.SetTrigger("isSleep");
     }
 
-    /// <summary> Playerが目覚める </summary>
+    /// <summary> 現実になる</summary>
     public void WakeUp()
     {
-        _playerCon.runtimeAnimatorController = _realPlayerCon;
-        Debug.Log("目覚める");
+        Debug.Log("現実になる");
         _isSleep = false;
-        _playerCon.SetTrigger("isWakeUp");
+        _playerCon.SetTrigger("isSleep");
+    }
+
+    /// <summary> 眠るアニメーションからアニメーションイベントで呼ぶ </summary>
+    public void ChangeController()
+    {
+        _playerCon.runtimeAnimatorController = StageManager.Instance.GetStageState == StageState.dream ? _realPlayerCon : _dreamPlayerCon;
     }
 
 }
