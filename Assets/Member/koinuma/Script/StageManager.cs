@@ -33,7 +33,8 @@ public class StageManager : MonoBehaviour
     [SerializeField, Tooltip("DreamèÛë‘Ç…Ç»ÇÍÇÈâÒêî")]
     int _dreamCount;
 
-    [SerializeField] Text _dreamCountText;
+    [SerializeField] GameObject _appleUI;
+    [SerializeField] GameObject _dreamCountLayoutGroup;
 
     [Space(10)]
     [Tooltip("ResultUIÇì¸ÇÍÇÈ")]
@@ -106,7 +107,6 @@ public class StageManager : MonoBehaviour
         _dreamInterface.SetActive(false);
         //_resultUI.SetActive(false);
         //_gameOverUI.SetActive(false);
-        _dreamCountText.text = _dreamCount.ToString();
 
         SwitchField();
     }
@@ -145,7 +145,7 @@ public class StageManager : MonoBehaviour
             SwitchField();
 
             _dreamCount--;
-            _dreamCountText.text = _dreamCount.ToString();
+            UpdateLayoutGroup();
             Invoke(nameof(ReturnFromDream), _dreamTime);
         }
         else if (_stageState == StageState.dream)
@@ -190,7 +190,20 @@ public class StageManager : MonoBehaviour
     public void AddDreamCount()
     {
         _dreamCount++;
-        _dreamCountText.text = _dreamCount.ToString();
+        UpdateLayoutGroup();
+    }
+
+    void UpdateLayoutGroup()
+    {
+        foreach (Transform apple in _dreamCountLayoutGroup.transform)
+        {
+            Destroy(apple.gameObject);
+        }
+
+        for (int i = 0;  i < _dreamCount; i++)
+        {
+            Instantiate(_appleUI, _dreamCountLayoutGroup.transform);
+        }
     }
 
     public void GameOver()
