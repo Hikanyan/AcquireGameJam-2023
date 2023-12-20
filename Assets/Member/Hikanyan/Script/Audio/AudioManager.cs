@@ -1,72 +1,45 @@
 using UnityEngine;
-using CriWare;
-
 
 public class AudioManager : AbstractSingleton<AudioManager>
 {
-    [SerializeField] string _streamingAssetsPathAcf = "";
-    [SerializeField] string _cueSheetBGM = "";
-    [SerializeField] string _cueSheetSe = "";
-
-    CriAtomSource _criAtomSourceBgm;
-    CriAtomSource _criAtomSourceSe;
-
-    private CriAtomExPlayback _criAtomExPlaybackBGM;
-    CriAtomEx.CueInfo _cueInfo;
+    private AudioSource _bgmSource; // BGM用のAudioSource
+    private AudioSource _seSource; // 効果音用のAudioSource
 
     protected override void OnAwake()
     {
-        //acf設定
-        string path = Common.streamingAssetsPath + $"/{_streamingAssetsPathAcf}.acf";
+        // オーディオソースを2Dに設定
+        _bgmSource = gameObject.AddComponent<AudioSource>();
+        _bgmSource.spatialBlend = 0.0f;
+        _seSource = gameObject.AddComponent<AudioSource>();
+        _seSource.spatialBlend = 0.0f;
 
-        CriAtomEx.RegisterAcf(null, path);
+        // BGMはループを有効にする
+        _bgmSource.loop = true;
 
-        // CriAtom作成
-        new GameObject().AddComponent<CriAtom>();
-
-        // BGM acb追加
-        CriAtom.AddCueSheet(_cueSheetBGM, $"{_cueSheetBGM}.acb", null, null);
-        // SE acb追加
-        CriAtom.AddCueSheet(_cueSheetSe, $"{_cueSheetSe}.acb", null, null);
-
-
-        //BGM用のCriAtomSourceを作成
-        _criAtomSourceBgm = gameObject.AddComponent<CriAtomSource>();
-        _criAtomSourceBgm.cueSheet = _cueSheetBGM;
-        //SE用のCriAtomSourceを作成
-        _criAtomSourceSe = gameObject.AddComponent<CriAtomSource>();
-        _criAtomSourceSe.cueSheet = _cueSheetSe;
+        // ボリューム
+        _bgmSource.volume = 1.0f;
+        _seSource.volume = 1.0f;
     }
 
-
-    private int _indexStay = 0;
-
-
-
-    public void CriBgmPlay(int index)
+    // BGMを再生する
+    public void BgmPlay(AudioClip clip)
     {
-        if (_criAtomSourceBgm.status == CriAtomSource.Status.Playing)
-        {
-            _criAtomSourceBgm.Stop();
-        }
+        // 前のBGMが再生されていたら停止
+        if (_bgmSource.isPlaying) _bgmSource.Stop();
 
-        _criAtomSourceBgm.loop = true;
-        _criAtomExPlaybackBGM = _criAtomSourceBgm.Play(index);
-        _indexStay = index;
+        _bgmSource.clip = clip;
+        _bgmSource.Play();
     }
 
-    public void CriBgmStop()
+    // BGMを停止する
+    public void BgmStop()
     {
-        _criAtomSourceBgm.Stop();
+        _bgmSource.Stop();
     }
 
-    public void CriSePlay(int index)
+    // 効果音を再生する
+    public void SePlay(AudioClip clip)
     {
-        _criAtomSourceSe.Play(index);
-    }
-
-    public void CriSeStop()
-    {
-        _criAtomSourceSe.Stop();
+        _seSource.PlayOneShot(clip);
     }
 }
