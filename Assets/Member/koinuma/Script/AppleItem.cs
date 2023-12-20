@@ -8,6 +8,7 @@ public class AppleItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             StageManager.Instance.AddDreamCount();
+            Destroy(gameObject);
         }
     }
 }
