@@ -5,23 +5,16 @@ using UnityEngine.Serialization; // シーン管理のために必要
 
 public class GameManager : AbstractSingleton<GameManager>
 {
-    [FormerlySerializedAs("NowGameState")] [Tooltip("現在のゲームステート")] [SerializeField]
+    [Tooltip("現在のゲームステート")] [SerializeField]
     private GameState nowGameState = GameState.None;
 
-    [FormerlySerializedAs("_InGameToResult")] [Tooltip("InGameから遷移するシーンの名前を設定")] [SerializeField]
+    [Tooltip("InGameから遷移するシーンの名前を設定")] [SerializeField]
     private string inGameToResult = "Result";
-
-    
-
-
-
 
     public void Initialize()
     {
         nowGameState = GameState.Title;
     }
-
-    
 
     private void Update()
     {
@@ -35,10 +28,13 @@ public class GameManager : AbstractSingleton<GameManager>
         {
             case GameState.Title:
                 SceneChange("TitleScene");
+                nowGameState = GameState.None;
                 break;
             case GameState.Start:
                 break;
             case GameState.Result:
+                SceneChange(inGameToResult);
+                nowGameState = GameState.None;
                 break;
             default:
                 break;

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BackButton : MonoBehaviour
 {
-    float timer = 10;
+    float timer = 3;
     bool change = false;
     bool Scene = false;
     Animator animator;
@@ -18,7 +18,6 @@ public class BackButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timer);
         if (change == true)
         {
             timer -= Time.deltaTime;
