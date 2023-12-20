@@ -100,8 +100,8 @@ public class StageManager : MonoBehaviour
         _backGrounds[1].DOFade(1f, _timeLimit / 2);
 
         _dreamInterface.SetActive(false);
-        _resultUI.SetActive(false);
-        _gameOverUI.SetActive(false);
+        //_resultUI.SetActive(false);
+        //_gameOverUI.SetActive(false);
         _dreamCountText.text = _dreamCount.ToString();
 
         SwitchField();
@@ -111,13 +111,13 @@ public class StageManager : MonoBehaviour
     {
         _timePer = (_timeLimit - _timer) / _timeLimit;
         if (_timePer <= 1) _clockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
-        else GameOver();
+        else if (_isPlaying) GameOver();
         _timer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            SwitchDream();
-        }
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    //SwitchDream();
+        //}
     }
 
     void OnHalfTime()
@@ -182,13 +182,13 @@ public class StageManager : MonoBehaviour
     public void GameOver()
     {
         _isPlaying = false;
-        _gameOverUI.SetActive(true);
+        _gameOverUI?.SetActive(true);
     }
 
     public void GameClear()
     {
         _isPlaying = false;
-        _resultUI.SetActive(true);
+        _resultUI?.SetActive(true);
     }
 }
 
