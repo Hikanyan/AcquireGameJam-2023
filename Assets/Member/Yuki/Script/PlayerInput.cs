@@ -4,9 +4,9 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [Tooltip("寝てるかどうか")]bool _isSleep = default;
-    public bool IsSleep { get => _isSleep; set => _isSleep = value; }
+    public bool IsSleep { get => _isSleep; }
     [SerializeField, Tooltip("アニメーター")] Animator _playerCon = default;
-    [SerializeField, Tooltip("現実のアニメーションコントローラー")]AnimatorController _realPlayerCon = default;
+    [SerializeField, Tooltip("現実のアニメーションコントローラー")]RuntimeAnimatorController _realPlayerCon = default;
     [SerializeField, Tooltip("夢のアニメーションコントローラー")] AnimatorOverrideController _dreamPlayerCon = default;
 
     StageManager _stageManager = default;
@@ -21,8 +21,8 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             _stageManager.SwitchDream();
-            if (_isSleep) WakeUp();
-            else Sleep();
+            //if (_isSleep) WakeUp();
+            //else Sleep();
         }
     }
 
