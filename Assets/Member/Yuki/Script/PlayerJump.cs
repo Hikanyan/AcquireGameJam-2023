@@ -6,13 +6,16 @@ public class PlayerJump : MonoBehaviour
     Rigidbody2D _rb2d = default;
     [SerializeField] float _jumpForce = default;
     [SerializeField] int _jumpCount = 0;
-    int _jumpCountMax = 0;
+    int _jumpCountMax = 1;
     Animator _playerAnimator = default;
+    AudioManager _audioManager = default;
+    [SerializeField] AudioClip _jumpSE = default;
 
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _playerAnimator = GetComponent<Animator>();
+        _audioManager = AudioManager.Instance;
     }
 
     void Update()
@@ -26,6 +29,7 @@ public class PlayerJump : MonoBehaviour
         {
             _rb2d.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _jumpCount++;
+            _audioManager.SePlay(_jumpSE);
             _playerAnimator.SetBool("isJump", true);
         }
     }
