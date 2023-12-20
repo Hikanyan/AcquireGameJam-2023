@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.XR;
 
 public class StageManager : MonoBehaviour
 {
@@ -16,7 +14,8 @@ public class StageManager : MonoBehaviour
     GameObject _dreamField;
 
     [SerializeField] float _timeLimit;
-    [SerializeField] GameObject[] _clockHands;
+    [SerializeField] GameObject _clockHand;
+    [SerializeField] GameObject _dreamClockHand;
 
     [SerializeField, Tooltip("[0]:–é [1];–¾‚¯•û [2]:’©")]
     SpriteRenderer[] _backGrounds;
@@ -77,6 +76,7 @@ public class StageManager : MonoBehaviour
 
     float _timer;
     float _timePer;
+    float _dreamTimer;
     StageState _stageState = StageState.real;
     public StageState GetStageState => _stageState;
 
@@ -116,12 +116,16 @@ public class StageManager : MonoBehaviour
         _timePer = (_timeLimit - _timer) / _timeLimit;
         if (_timePer <= 1)
         {
-            foreach (var hand in _clockHands)
-            {
-                hand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
-            }
+            _clockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
         }
         else if (_isPlaying) GameOver();
+
+        if (_dreamTimer > 0)
+        {
+            _dreamClockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * (_dreamTime - _dreamTimer) / _dreamTime);
+            _dreamTimer -= Time.deltaTime;
+        }
+
         _timer -= Time.deltaTime;
 
         //if (Input.GetKeyDown(KeyCode.X))
@@ -184,6 +188,8 @@ public class StageManager : MonoBehaviour
             foreach (Collider2D col in _dreamColliders) col.isTrigger = false;
             _realClock.SetActive(false);
             _dreamClock.SetActive(true);
+
+            _dreamTimer = _dreamTime;
         }
     }
 

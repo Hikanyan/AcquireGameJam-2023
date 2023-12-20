@@ -46,10 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowGameState: 0
   inGameToResult: Result
-  isGame: 0
-  isClear: 0
-  _time: 180
-  resultUI: {fileID: 0}
-  titleBgmAudioClip: {fileID: 8300000, guid: 7fdad343e7e6d5c4d983288cf7f29ccd, type: 3}
-  inGameBgmAudioClip: {fileID: 8300000, guid: 1814e5101e20058499eedccaf06eff6b, type: 3}
-  resultBgmAudioClip: {fileID: 8300000, guid: 7b57d2f9e4cc0794aac4d67caf0fa2f8, type: 3}
+  titleBgmAudioClip: {fileID: 8300000, guid: f567eaeae9ec9134c84ceb20d2b1888f, type: 3}
