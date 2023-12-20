@@ -11,7 +11,7 @@ public class Enemy3Controller : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerDead>();
+            collision.gameObject.GetComponent<PlayerDead>().Dead();
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
