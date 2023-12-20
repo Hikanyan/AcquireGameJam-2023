@@ -79,7 +79,7 @@ public class StageManager : MonoBehaviour
     float _timer;
     float _timePer;
     float _dreamTimer;
-    StageState _stageState = StageState.real;
+    [SerializeField] StageState _stageState = StageState.real;
     public StageState GetStageState => _stageState;
 
     private void Awake()
@@ -147,6 +147,7 @@ public class StageManager : MonoBehaviour
         //ƒŠƒAƒ‹
         if (_stageState == StageState.real && _dreamCount > 0)
         {
+            Debug.Log(_dreamCount + "a");
             _stageState = StageState.dream;
             _gool.SetActive(false);
             SwitchField();
@@ -158,6 +159,7 @@ public class StageManager : MonoBehaviour
         //–²
         else if (_stageState == StageState.dream)
         {
+            Debug.Log(_dreamCount + "b");
             _stageState = StageState.real;
             _gool.SetActive(true);
             SwitchField();
