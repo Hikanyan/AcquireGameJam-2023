@@ -6,7 +6,7 @@ public class PlayerJump : MonoBehaviour
     Rigidbody2D _rb2d = default;
     [SerializeField] float _jumpForce = default;
     [SerializeField] int _jumpCount = 0;
-    int _jumpCountMax = 2;
+    int _jumpCountMax = 0;
     Animator _playerAnimator = default;
 
     void Start()

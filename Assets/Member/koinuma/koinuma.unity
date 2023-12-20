@@ -811,7 +811,8 @@ MonoBehaviour:
   _realField: {fileID: 574117781}
   _dreamField: {fileID: 721300569}
   _timeLimit: 20
-  _clockHand: {fileID: 2088353397}
+  _clockHands:
+  - {fileID: 2088353397}
   _backGrounds:
   - {fileID: 506149200}
   - {fileID: 114185446}
