@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.Serialization;
 
 public class StageManager : MonoBehaviour
 {
@@ -32,45 +31,36 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] Text _dreamCountText;
 
-    [Tooltip("ゲーム開始判定（ゲーム中の時はTrue）")]
-    [SerializeField]
-    private bool isGame = false;
-
-    [Tooltip("ゲームクリア判定（クリア時にTrue）")]
-    [SerializeField]
-    private bool isClear = false;
-
-
+    [Space(10)]
     [Tooltip("ResultUIを入れる")]
     [SerializeField]
-    private GameObject resultUI;
+    private GameObject _resultUI;
+
+    [Tooltip("GameOverUIを入れる")]
+    [SerializeField]
+    private GameObject _gameOverUI;
 
     [Tooltip("TitleBGMを入れる")]
     [SerializeField]
-    private AudioClip titleBgmAudioClip;
+    private AudioClip _titleBgmAudioClip;
 
     [Tooltip("InGameBGMを入れる")]
     [SerializeField]
-    private AudioClip inGameBgmAudioClip;
+    private AudioClip _inGameBgmAudioClip;
 
     [Tooltip("ResultBGMを入れる")]
     [SerializeField]
-    private AudioClip resultBgmAudioClip;
-
+    private AudioClip _resultBgmAudioClip;
 
     static StageManager _instance;
-    static AudioManager _audioManager;
-
     public static StageManager Instance
     {
         get => _instance;
     }
 
-    public float TimeLimit
-    {
-        get => _timeLimit;
-    }
+    static AudioManager _audioManager;
 
+    bool _isPlaying = true;
     public bool IsPlaying
     {
         get => _isPlaying;
@@ -82,7 +72,6 @@ public class StageManager : MonoBehaviour
 
     float _timer;
     float _timePer;
-    bool _isPlaying = false;
     StageState _stageState = StageState.real;
     public StageState GetStageState => _stageState;
 
@@ -111,6 +100,8 @@ public class StageManager : MonoBehaviour
         _backGrounds[1].DOFade(1f, _timeLimit / 2);
 
         _dreamInterface.SetActive(false);
+        //_resultUI.SetActive(false);
+        //_gameOverUI.SetActive(false);
         _dreamCountText.text = _dreamCount.ToString();
 
         SwitchField();
@@ -120,12 +111,13 @@ public class StageManager : MonoBehaviour
     {
         _timePer = (_timeLimit - _timer) / _timeLimit;
         if (_timePer <= 1) _clockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
+        else if (_isPlaying) GameOver();
         _timer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            SwitchDream();
-        }
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    //SwitchDream();
+        //}
     }
 
     void OnHalfTime()
@@ -185,6 +177,18 @@ public class StageManager : MonoBehaviour
     {
         _dreamCount++;
         _dreamCountText.text = _dreamCount.ToString();
+    }
+
+    public void GameOver()
+    {
+        _isPlaying = false;
+        _gameOverUI?.SetActive(true);
+    }
+
+    public void GameClear()
+    {
+        _isPlaying = false;
+        _resultUI?.SetActive(true);
     }
 }
 
