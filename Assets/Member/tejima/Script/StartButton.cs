@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    float timer1 = 10;
-    float timer2 = 10;
-    float timer3 = 10;
+    float timer1 = 3;
+    float timer2 = 3;
+    float timer3 = 3;
     bool change1 = false;
     bool change2 = false;
     bool change3 = false;
