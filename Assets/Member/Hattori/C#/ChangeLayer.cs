@@ -39,8 +39,8 @@ public class ChangeLayer : MonoBehaviour
                 {
                     _nowState = NowState.Real;
                     ChangeCameraLayer(dreamLayer);//dreamレイヤー以外を表示
-                    realObject.SetActive(false);
-                    dreamObject.SetActive(true);
+                    realObject.SetActive(true);
+                    dreamObject.SetActive(false);
                 }
             }
         });
