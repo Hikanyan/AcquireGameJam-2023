@@ -11,6 +11,9 @@ public class GameManager : AbstractSingleton<GameManager>
     [Tooltip("InGameから遷移するシーンの名前を設定")] [SerializeField]
     private string inGameToResult = "Result";
 
+    [Tooltip("TitleBGMを入れる")] [SerializeField]
+    private AudioClip titleBgmAudioClip;
+
     public void Initialize()
     {
         nowGameState = GameState.Title;
@@ -28,6 +31,7 @@ public class GameManager : AbstractSingleton<GameManager>
         {
             case GameState.Title:
                 SceneChange("TitleScene");
+                AudioManager.Instance.BgmPlay(titleBgmAudioClip);
                 nowGameState = GameState.None;
                 break;
             case GameState.Start:
