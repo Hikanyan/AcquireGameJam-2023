@@ -10,7 +10,7 @@ public class StageManager : MonoBehaviour
     [SerializeField, Tooltip("real‚ÅŒ©‚¦‚éobject‚Ìe")] GameObject _realField;
     [SerializeField, Tooltip("dream‚ÅŒ©‚¦‚éobject‚Ìe")] GameObject _dreamField;
     [SerializeField] float _timeLimit;
-    [SerializeField] GameObject _clockHand;
+    [SerializeField] GameObject[] _clockHands;
     [SerializeField, Tooltip("[0]:–é [1];–¾‚¯•û [2]:’©")] SpriteRenderer[] _backGrounds;
 
     [Header("Dream")]
@@ -61,7 +61,10 @@ public class StageManager : MonoBehaviour
     private void Update()
     {
         _timePer = (_timeLimit - _timer) / _timeLimit;
-        if (_timePer <= 1) _clockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
+        foreach (var hand in _clockHands)
+        {
+            if (_timePer <= 1) hand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
+        }
         _timer -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.X))
