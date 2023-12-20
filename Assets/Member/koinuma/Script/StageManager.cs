@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.XR;
 
 public class StageManager : MonoBehaviour
 {
@@ -15,13 +16,16 @@ public class StageManager : MonoBehaviour
     GameObject _dreamField;
 
     [SerializeField] float _timeLimit;
-    [SerializeField] GameObject _clockHand;
+    [SerializeField] GameObject[] _clockHands;
 
     [SerializeField, Tooltip("[0]:–é [1];–¾‚¯•û [2]:’©")]
     SpriteRenderer[] _backGrounds;
 
     [Header("Dream")] [SerializeField, Tooltip("draemInterface")]
     GameObject _dreamInterface;
+
+    [SerializeField] GameObject _realClock;
+    [SerializeField] GameObject _dreamClock;
 
     [SerializeField, Tooltip("1‰ñ‚ÌDream‚Å‚Ì§ŒÀŠÔ")]
     float _dreamTime;
@@ -110,7 +114,13 @@ public class StageManager : MonoBehaviour
     private void Update()
     {
         _timePer = (_timeLimit - _timer) / _timeLimit;
-        if (_timePer <= 1) _clockHand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
+        if (_timePer <= 1)
+        {
+            foreach (var hand in _clockHands)
+            {
+                hand.transform.localRotation = Quaternion.Euler(0, 0, -360 * _timePer);
+            }
+        }
         else if (_isPlaying) GameOver();
         _timer -= Time.deltaTime;
 
@@ -163,6 +173,8 @@ public class StageManager : MonoBehaviour
             Camera.main.cullingMask = ~(1 << _dreamLayer);
             foreach (Collider2D col in _realColliders) col.isTrigger = false;
             foreach (Collider2D col in _dreamColliders) col.isTrigger = true;
+            _realClock.SetActive(true);
+            _dreamClock.SetActive(false);
         }
         else // to dream
         {
@@ -170,6 +182,8 @@ public class StageManager : MonoBehaviour
             Camera.main.cullingMask = ~(1 << _realLayer);
             foreach (Collider2D col in _realColliders) col.isTrigger = true;
             foreach (Collider2D col in _dreamColliders) col.isTrigger = false;
+            _realClock.SetActive(false);
+            _dreamClock.SetActive(true);
         }
     }
 
