@@ -520,7 +520,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b0c311be6e49a7343ba6c4881b825a5a, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u64CD\u4F5C\u8AAC\u660E\nD\u307E\u305F\u306F\u53F3\u30AD\u30FC:\u53F3\u306B\u79FB\u52D5\nA\u307E\u305F\u306F\u5DE6\u30AD\u30FC:\u5DE6\u306B\u79FB\u52D5\nSpace:\u30B8\u30E3\u30F3\u30D7\nX:\u5BDD\u308B\u3068\u8D77\u304D\u308B\u306E\u5207\u308A\u66FF\u3048\n\n\u904A\u3073\u65B9\n\u767D\u96EA\u59EB\u3092\u64CD\u4F5C\u3057\u3066\u3001\n\u30B4\u30FC\u30EB\u3067\u3042\u308B\u300C\u7D76\u666F\u300D\u3092\u898B\u306B\u884C\u3053\u3046\uFF01\n\u73FE\u5B9F\u306B\u3042\u308B\u969C\u5BB3\u7269\u306F\u3001\n\u843D\u3061\u3066\u3044\u308B\u30EA\u30F3\u30B4\u3092\u6301\u3063\u305F\u72B6\u614B\u3067\n\u300C\u5922\u300D\u306B\u5165\u308D\u3046\uFF01\n\u3059\u308B\u3068\u3001\u305D\u306E\u969C\u5BB3\u7269\u306F\u6D88\u3048\u305F\u308A\u3001\n\u65B0\u3057\u3044\u30AE\u30DF\u30C3\u30AF\u304C\u898B\u3048\u308B\u3088\u3046\u306B\uFF01\n\u3067\u3082\u6C17\u3092\u4ED8\u3051\u3066\uFF01\n\u5922\u306B\u5B58\u5728\u3059\u308B\u300C\u5922\u9B54\u300D\u306B\u3076\u3064\u304B\u308B\u3068\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC...\n\u307E\u305F\u3001\u5922\u306B\u5165\u308C\u308B\u6642\u9593\u306F\u9650\u3089\u308C\u3066\u3044\u308B\u306E\u3067\u6CE8\u610F\uFF01\n"
+  m_Text: "\u64CD\u4F5C\u8AAC\u660E\nD\u307E\u305F\u306F\u53F3\u30AD\u30FC:\u53F3\u306B\u79FB\u52D5\nA\u307E\u305F\u306F\u5DE6\u30AD\u30FC:\u5DE6\u306B\u79FB\u52D5\nSpace:\u30B8\u30E3\u30F3\u30D7\nX:\u5BDD\u308B\u3068\u8D77\u304D\u308B\u306E\u5207\u308A\u66FF\u3048\n\n\u904A\u3073\u65B9\n\u767D\u96EA\u59EB\u3092\u64CD\u4F5C\u3057\u3066\u3001\n\u30B4\u30FC\u30EB\u3067\u3042\u308B\u300C\u304A\u57CE\u300D\u306B\u884C\u3053\u3046\uFF01\n\u73FE\u5B9F\u306B\u3042\u308B\u969C\u5BB3\u7269\u306F\u3001\n\u843D\u3061\u3066\u3044\u308B\u30EA\u30F3\u30B4\u3092\u6301\u3063\u305F\u72B6\u614B\u3067\n\u300C\u5922\u300D\u306B\u5165\u308D\u3046\uFF01\n\u3059\u308B\u3068\u3001\u305D\u306E\u969C\u5BB3\u7269\u306F\u6D88\u3048\u305F\u308A\u3001\n\u65B0\u3057\u3044\u30AE\u30DF\u30C3\u30AF\u304C\u898B\u3048\u308B\u3088\u3046\u306B\uFF01\n\u3067\u3082\u6C17\u3092\u4ED8\u3051\u3066\uFF01\n\u5922\u306B\u5B58\u5728\u3059\u308B\u300C\u5922\u9B54\u300D\u306B\u3076\u3064\u304B\u308B\u3068\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC...\n\u307E\u305F\u3001\u5922\u306B\u5165\u308C\u308B\u6642\u9593\u306F\u9650\u3089\u308C\u3066\u3044\u308B\u306E\u3067\u6CE8\u610F\uFF01\n"
 --- !u!222 &1622091576
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1622954668}
   - component: {fileID: 1622954667}
   - component: {fileID: 1622954666}
+  - component: {fileID: 1622954669}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -623,7 +624,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1622954667}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1622954669}
+        m_TargetAssemblyTypeName: BackButton, Assembly-CSharp
+        m_MethodName: BackScene2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1622954667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +675,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622954664}
   m_CullTransparentMesh: 1
+--- !u!114 &1622954669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622954664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f249c650407fc4d86e41a3b2ac69f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685134383
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +745,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b0c311be6e49a7343ba6c4881b825a5a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0

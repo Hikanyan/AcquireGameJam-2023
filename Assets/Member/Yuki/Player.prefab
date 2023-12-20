@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 980056719, guid: 0d84d7a84dc186143bcd5ff8249c42f5, type: 3}
+  m_Sprite: {fileID: -1476914618, guid: 162377a6ad739cb4095e953971b90c33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa6644351112274bb25cefaad9b8ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerName: 
 --- !u!114 &3545546960470347391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060ac4f124c52bd4f973407664430c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerCon: {fileID: 5775002589454858380}
+  _realPlayerCon: {fileID: 9100000, guid: 4a25bfb22c54f6741ac508e88406bc30, type: 2}
+  _dreamPlayerCon: {fileID: 22100000, guid: 7fa16ea425c120540bbca53866d47adb, type: 2}
 --- !u!114 &3181132100237073925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,8 +205,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04010415, y: 0.04135251}
-  m_Size: {x: 3.2725592, y: 7.269486}
+  m_Offset: {x: -0.04010415, y: -0.9882393}
+  m_Size: {x: 3.2725592, y: 7.3807926}
   m_Direction: 0
 --- !u!95 &5775002589454858380
 Animator:
