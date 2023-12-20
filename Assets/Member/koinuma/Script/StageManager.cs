@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 public class StageManager : MonoBehaviour
 {
@@ -31,7 +32,34 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] Text _dreamCountText;
 
+    [Tooltip("ゲーム開始判定（ゲーム中の時はTrue）")]
+    [SerializeField]
+    private bool isGame = false;
+
+    [Tooltip("ゲームクリア判定（クリア時にTrue）")]
+    [SerializeField]
+    private bool isClear = false;
+
+
+    [Tooltip("ResultUIを入れる")]
+    [SerializeField]
+    private GameObject resultUI;
+
+    [Tooltip("TitleBGMを入れる")]
+    [SerializeField]
+    private AudioClip titleBgmAudioClip;
+
+    [Tooltip("InGameBGMを入れる")]
+    [SerializeField]
+    private AudioClip inGameBgmAudioClip;
+
+    [Tooltip("ResultBGMを入れる")]
+    [SerializeField]
+    private AudioClip resultBgmAudioClip;
+
+
     static StageManager _instance;
+    static AudioManager _audioManager;
 
     public static StageManager Instance
     {
