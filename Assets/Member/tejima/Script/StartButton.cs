@@ -65,4 +65,8 @@ public class StartButton : MonoBehaviour
     {
         change3 = true;
     }
+    public void ChangeScene4()
+    {
+        SceneManager.LoadScene("setumei", LoadSceneMode.Single);
+    }
 }
