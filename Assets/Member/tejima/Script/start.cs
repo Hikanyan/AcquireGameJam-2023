@@ -10,11 +10,11 @@ public class start : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        player.transform.position = wood.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Instantiate(player,wood.transform);
     }
 }
