@@ -34,4 +34,8 @@ public class BackButton : MonoBehaviour
     {
         change = true;
     }
+    public void BackScene2()
+    {
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
+    }
 }

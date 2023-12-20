@@ -56,7 +56,7 @@ public class StageManager : MonoBehaviour
     float _timePer;
     bool _isPlaying = false;
     StageState _stageState = StageState.real;
-
+    public StageState GetStageState => _stageState;
 
     private void Awake()
     {
@@ -160,7 +160,7 @@ public class StageManager : MonoBehaviour
     }
 }
 
-enum StageState
+public enum StageState
 {
     real,
     dream
