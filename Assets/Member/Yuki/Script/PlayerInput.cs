@@ -1,16 +1,18 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    bool _isSleep = default;
+    [Tooltip("寝てるかどうか")]bool _isSleep = default;
     public bool IsSleep { get => _isSleep; set => _isSleep = value; }
-    Animator _playerAnimator = default;
+    [SerializeField, Tooltip("アニメーター")] Animator _playerCon = default;
+    [SerializeField, Tooltip("現実のアニメーションコントローラー")]AnimatorController _realPlayerCon = default;
+    [SerializeField, Tooltip("夢のアニメーションコントローラー")] AnimatorOverrideController _dreamPlayerCon = default;
 
-    bool _canWakeUp = false;
     StageManager _stageManager = default;
     private void Start()
     {
-        _playerAnimator = GetComponent<Animator>();
+        _playerCon = GetComponent<Animator>();
         _stageManager = StageManager.Instance;
     }
 
@@ -27,17 +29,19 @@ public class PlayerInput : MonoBehaviour
     /// <summary> Playerが眠る</summary>
     public void Sleep()
     {
+        _playerCon.runtimeAnimatorController = _dreamPlayerCon;
         Debug.Log("眠る");
         _isSleep = true;
-        _playerAnimator.SetTrigger("isSleep");
+        _playerCon.SetTrigger("isSleep");
     }
 
     /// <summary> Playerが目覚める </summary>
     public void WakeUp()
     {
+        _playerCon.runtimeAnimatorController = _realPlayerCon;
         Debug.Log("目覚める");
         _isSleep = false;
-        _playerAnimator.SetTrigger("isWakeUp");
+        _playerCon.SetTrigger("isWakeUp");
     }
 
 }
