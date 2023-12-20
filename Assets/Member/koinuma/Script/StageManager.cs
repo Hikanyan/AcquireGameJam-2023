@@ -12,6 +12,8 @@ public class StageManager : MonoBehaviour
 
     [SerializeField, Tooltip("dream‚ÅŒ©‚¦‚éobject‚Ìe")]
     GameObject _dreamField;
+    
+    [SerializeField] GameObject _gool;
 
     [SerializeField] float _timeLimit;
     [SerializeField] GameObject _clockHand;
@@ -142,20 +144,22 @@ public class StageManager : MonoBehaviour
 
     public void SwitchDream()
     {
+        //ƒŠƒAƒ‹
         if (_stageState == StageState.real && _dreamCount > 0)
         {
             _stageState = StageState.dream;
-            _dreamInterface.SetActive(true);
+            _gool.SetActive(false);
             SwitchField();
 
             _dreamCount--;
             UpdateLayoutGroup();
             Invoke(nameof(ReturnFromDream), _dreamTime);
         }
+        //–²
         else if (_stageState == StageState.dream)
         {
             _stageState = StageState.real;
-            _dreamInterface.SetActive(false);
+            _gool.SetActive(true);
             SwitchField();
 
             CancelInvoke(nameof(ReturnFromDream));
@@ -179,6 +183,7 @@ public class StageManager : MonoBehaviour
             foreach (Collider2D col in _dreamColliders) col.isTrigger = true;
             _realClock.SetActive(true);
             _dreamClock.SetActive(false);
+            
         }
         else // to dream
         {
