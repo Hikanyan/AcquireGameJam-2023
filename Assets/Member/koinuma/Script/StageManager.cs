@@ -7,27 +7,56 @@ public class StageManager : MonoBehaviour
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] int _realLayer;
     [SerializeField] int _dreamLayer;
-    [SerializeField, Tooltip("realで見えるobjectの親")] GameObject _realField;
-    [SerializeField, Tooltip("dreamで見えるobjectの親")] GameObject _dreamField;
+
+    [SerializeField, Tooltip("realで見えるobjectの親")]
+    GameObject _realField;
+
+    [SerializeField, Tooltip("dreamで見えるobjectの親")]
+    GameObject _dreamField;
+
     [SerializeField] float _timeLimit;
     [SerializeField] GameObject _clockHand;
-    [SerializeField, Tooltip("[0]:夜 [1];明け方 [2]:朝")] SpriteRenderer[] _backGrounds;
 
-    [Header("Dream")]
-    [SerializeField, Tooltip("draemInterface")] GameObject _dreamInterface;
-    [SerializeField, Tooltip("1回のDreamでの制限時間")] float _dreamTime;
-    [SerializeField, Tooltip("Dream状態になれる回数")] int _dreamCount;
+    [SerializeField, Tooltip("[0]:夜 [1];明け方 [2]:朝")]
+    SpriteRenderer[] _backGrounds;
+
+    [Header("Dream")] [SerializeField, Tooltip("draemInterface")]
+    GameObject _dreamInterface;
+
+    [SerializeField, Tooltip("1回のDreamでの制限時間")]
+    float _dreamTime;
+
+    [SerializeField, Tooltip("Dream状態になれる回数")]
+    int _dreamCount;
+
     [SerializeField] Text _dreamCountText;
 
     static StageManager _instance;
-    public static StageManager Instance{ get => _instance; }
+
+    public static StageManager Instance
+    {
+        get => _instance;
+    }
+
+    public float TimeLimit
+    {
+        get => _timeLimit;
+    }
+
+    public bool IsPlaying
+    {
+        get => _isPlaying;
+        set => _isPlaying = value;
+    }
 
     Collider2D[] _realColliders;
     Collider2D[] _dreamColliders;
 
     float _timer;
     float _timePer;
+    bool _isPlaying = false;
     StageState _stageState = StageState.real;
+
 
     private void Awake()
     {
@@ -48,6 +77,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        _isPlaying = true;
         _timer = _timeLimit;
         _backGrounds[0].DOFade(0f, _timeLimit / 2).OnComplete(OnHalfTime);
         _backGrounds[1].DOFade(1f, _timeLimit / 2);

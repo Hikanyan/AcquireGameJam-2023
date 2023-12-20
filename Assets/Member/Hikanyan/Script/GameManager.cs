@@ -5,44 +5,42 @@ using UnityEngine.Serialization; // シーン管理のために必要
 
 public class GameManager : AbstractSingleton<GameManager>
 {
-    [FormerlySerializedAs("NowGameState")]
-    [Tooltip("現在のゲームステート")]
-    [SerializeField] private GameState nowGameState = GameState.None;
+    [FormerlySerializedAs("NowGameState")] [Tooltip("現在のゲームステート")] [SerializeField]
+    private GameState nowGameState = GameState.None;
 
-    [FormerlySerializedAs("_InGameToResult")]
-    [Tooltip("InGameから遷移するシーンの名前を設定")]
-    [SerializeField] private string inGameToResult = "Result";
+    [FormerlySerializedAs("_InGameToResult")] [Tooltip("InGameから遷移するシーンの名前を設定")] [SerializeField]
+    private string inGameToResult = "Result";
 
-    [Tooltip("ゲーム開始判定（ゲーム中の時はTrue）")] 
-    [SerializeField] private bool isGame = false;
-    [Tooltip("ゲームクリア判定（クリア時にTrue）")] 
-    [SerializeField] private bool isClear = false;
-    [Tooltip("制限時間")]
-    [SerializeField] private float _time = 180;
-    [Tooltip("実際の計算に用いるタイマー変数")]
-    private float _timeValue;
+    [Tooltip("ゲーム開始判定（ゲーム中の時はTrue）")] [SerializeField]
+    private bool isGame = false;
 
-    [FormerlySerializedAs("_resultUI")]
-    [Tooltip("ResultUIを入れる")]
-    [SerializeField] private GameObject resultUI;
+    [Tooltip("ゲームクリア判定（クリア時にTrue）")] [SerializeField]
+    private bool isClear = false;
+
+    [Tooltip("実際の計算に用いるタイマー変数")] private float _timeValue;
+
+    [FormerlySerializedAs("_resultUI")] [Tooltip("ResultUIを入れる")] [SerializeField]
+    private GameObject resultUI;
 
     AudioManager _audioManager;
-    [Tooltip("TitleBGMを入れる")]
-    [SerializeField] private AudioClip titleBgmAudioClip;
-    [Tooltip("InGameBGMを入れる")]
-    [SerializeField] private AudioClip inGameBgmAudioClip;
-    [Tooltip("ResultBGMを入れる")]
-    [SerializeField] private AudioClip resultBgmAudioClip;
-    
+
+    [Tooltip("TitleBGMを入れる")] [SerializeField]
+    private AudioClip titleBgmAudioClip;
+
+    [Tooltip("InGameBGMを入れる")] [SerializeField]
+    private AudioClip inGameBgmAudioClip;
+
+    [Tooltip("ResultBGMを入れる")] [SerializeField]
+    private AudioClip resultBgmAudioClip;
+
     public void Initialize()
     {
         nowGameState = GameState.Title;
     }
-    
+
     public void Awake()
     {
         _audioManager = AudioManager.Instance;
-        _timeValue = _time;
         UpdateTimeText();
     }
 
@@ -74,12 +72,8 @@ public class GameManager : AbstractSingleton<GameManager>
 
     private void UpdateGameTimer()
     {
-        if (_timeValue > 0)
-        {
-            _timeValue -= Time.deltaTime;
-            UpdateTimeText();
-        }
-        else
+        _timeValue = StageManager.Instance.TimeLimit;
+        if (_timeValue < 0)
         {
             EndGame();
         }
@@ -87,7 +81,6 @@ public class GameManager : AbstractSingleton<GameManager>
 
     private void UpdateTimeText()
     {
-        
     }
 
     public void StartGame()
@@ -99,6 +92,7 @@ public class GameManager : AbstractSingleton<GameManager>
         {
             UpdateGameTimer();
         }
+
         // BGM再生など
         _audioManager.BgmPlay(inGameBgmAudioClip);
     }
@@ -107,6 +101,7 @@ public class GameManager : AbstractSingleton<GameManager>
     public void EndGame()
     {
         isGame = false;
+        StageManager.Instance.IsPlaying = false;
         nowGameState = GameState.Result;
         // タイマーストップ
         // BGMストップ
@@ -121,7 +116,6 @@ public class GameManager : AbstractSingleton<GameManager>
         // タイマー保持
         // BGMストップ
         // ポーズ画面表示など
-        
     }
 
     public void Result()
@@ -132,7 +126,7 @@ public class GameManager : AbstractSingleton<GameManager>
         _audioManager.BgmPlay(resultBgmAudioClip);
         resultUI.SetActive(true);
     }
-    
+
     //Sceneを切り替える
     public void SceneChange(string sceneName)
     {
