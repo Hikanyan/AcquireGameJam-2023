@@ -18,7 +18,6 @@ public class BackButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timer);
         if (change == true)
         {
             timer -= Time.deltaTime;

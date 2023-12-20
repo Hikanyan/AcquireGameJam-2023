@@ -22,9 +22,6 @@ public class StartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timer1);
-        Debug.Log(timer2);
-        Debug.Log(timer3);
         if (change1 == true)
         {
             timer1 -= Time.deltaTime;
